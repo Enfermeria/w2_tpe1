@@ -1,2 +1,8 @@
 # w2_tpe1
-Trabajo práctico Parte 1 Web 2 Tudai
+Primer entrega del Trabajo Práctico Especial de Web 2 Tudai
+John David Molina Velarde y Mateo Fleites
+
+Diagrama de Entidad Relación en DER_libros.pdf
+Script sql con la generación de la base de datos, tablas y relaciones respectivas en w2_tpe_libros.sql
+
+Es una base de datos con su tabla de libros, autores y los géneros de dichos libros.

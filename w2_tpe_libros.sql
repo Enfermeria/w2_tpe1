@@ -30,3 +30,49 @@ CREATE TABLE `w2_tpe_libros`.`genero` (
     `genero` VARCHAR(45) NOT NULL , 
     PRIMARY KEY (`idgenero`)
 ) ENGINE = InnoDB;
+
+
+-- Relaciones entre tablas
+ALTER TABLE `libro`
+  ADD CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`idgenero`) REFERENCES `genero` (`idgenero`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `libro_ibfk_2` FOREIGN KEY (`idautor`) REFERENCES `autor` (`idautor`) ON UPDATE CASCADE;
+COMMIT;
+
+
+-- Insertamos datos de ejemplo a las tablas
+
+INSERT INTO `genero` (`idgenero`, `genero`) VALUES 
+    (NULL, 'Thriller'),
+    (NULL, 'Narrativa'), 
+    (NULL, 'Novela Realista'),
+    (NULL, 'Juvenil'), 
+    (NULL, 'Fantástico'), 
+    (NULL, 'Histórica'), 
+    (NULL, 'Misterio'), 
+    (NULL, 'Ciencia Ficción'),
+    (NULL, 'Clásico');;    
+
+
+INSERT INTO `autor` (`idautor`, `nombre`, `biografia`) VALUES 
+    (NULL, 'Aguinis, M', ''), 
+    (NULL, 'Agustí, I', ''),
+    VALUES (NULL, 'Alas Clarín, L', ''), 
+    (NULL, 'Alcott, Louise M.', ''), 
+    (NULL, 'Alexaindre, V', ''), 
+    (NULL, 'Allende, Isabel', ''), 
+    (NULL, 'Chesterton, G.K.', ''),
+    (NULL, 'Christie, A.', ''), 
+    (NULL, 'Chicot, M.', '');
+
+INSERT INTO `libro` (`idlibro`, `titulo`, `idautor`, `idgenero`, `edicion`, `argumento`) VALUES 
+    (NULL, 'Asalto al paraíso', '1', '5', '2002', ''), 
+    (NULL, 'Mariona', '2', '6', '2001', ''), 
+    (NULL, 'La Regenta', '3', '7', '1994', ''), 
+    (NULL, 'Mujercitas', '4', '8', '2004', ''), 
+    (NULL, 'La destrucción o el amor', '5', '13', '1984', ''), 
+    (NULL, 'El reino del dragón de oro', '6', '9', '2016', ''),
+    (NULL, 'El hombre que fue Jueves', '7', '13', '1984', ''), 
+    (NULL, 'El asesinato de Pitágoras', '9', '10', '2013', ''), 
+    (NULL, 'Asesinato en el Orient Expresss', '8', '11', '1987', ''), 
+    (NULL, 'Maldad bajo el sol', '8', '11', '1983', '');
+
