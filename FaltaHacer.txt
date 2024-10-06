@@ -1,0 +1,13 @@
+Falta hacer:
+- Sacar argumento de libros, modificando readme e imagen DER
+- agregar orden x a libros
+- agregar paginación
+- agregar fotos a autor (tanto la carga como mostrarla)
+- agregar authoring
+- agregar administración de usuarios: tabla usuarios, crud usuarios
+- agregar config.php para la base de datos
+- poner fotos de fondo decorativas según secciones (una bibliotea para libros, un autor escribiendo para autores, algo alusivo para géneros)
+- sanitizar todas las salidas
+
+Hechos:
+- agregar vínculo de cada autor a su lista de libros (dónde va el botón de volver? a autores o a libros?)

@@ -1,0 +1,46 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<h2>Editando un Género</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Género</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider"> 
+
+        <?php foreach($generos as $regGenero): ?>
+            <?php if ($idGenero == $regGenero->idgenero): //Si es el que edito muestro form?>
+                <tr que_id="<?=$regGenero->idgenero?>">
+                    <form action="editGenero/<?=$regGenero->idgenero?>" method="POST">                        
+                        <td data-label="Género">  <input type="text"   name="genero"    value="<?=$regGenero->genero?>" size="45" required></td>
+                        
+                        <td data-label="Acciones">
+                            <button type="submit"   class="btn btn-sm btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>
+                            &nbsp; 
+                            <a href="showGeneros" class="btn btn-sm btn-secondary"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </td>
+                    </form>
+                </tr>
+            <?php else: // si no es el que edit muestro fila normal de la tabla?>
+                <tr que_id="<?=$regGenero->idgenero?>">
+                    <td data-label="Género"><?=$regGenero->genero?></td>
+
+                    <td data-label="Acciones">
+                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        &nbsp; 
+                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+                </tr>
+            <?php endif; ?> 
+        <?php endforeach; ?> 
+
+    </tbody>
+</table>
+
+
+
+
+<?php require 'templates/layout/footer.phtml' ?>

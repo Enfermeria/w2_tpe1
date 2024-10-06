@@ -1,0 +1,20 @@
+<!-- Filtro -->
+<div class="d-flex justify-content-center">
+    <form action="showAutores" method="POST" class="my-4">
+        Filtrar por:
+        <select name="cbfiltrar">
+            <option value="no filtrar"      <?php if ($filtro->cbfiltrar == "no filtrar"  ) echo 'selected'?> >no filtrar</option>
+            <option value="por nombre"      <?php if ($filtro->cbfiltrar == "por nombre"  ) echo 'selected'?> >por nombre</option>
+            <option value="por biografia"   <?php if ($filtro->cbfiltrar == "biografia")    echo 'selected'?> >por biografía</option>
+        </select>
+        <input type="text" name="txtfiltro" size="30" value="<?=$filtro->txtfiltro?>">
+        <button type="submit" class="btn btn-primary mt-2"><i class="fa fa-filter" aria-hidden="true"></i>&nbsp;Filtrar</button>
+    </form>
+</div>
+
+<!-- Botonera de navegación/alta -->
+<div class="d-flex justify-content-center">
+    <button class="btn btn-primary mt-2"     disabled><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Anterior página</button>
+    <a href="showAddAutor" class="btn btn-primary mt-2"><i class="fa fa-graduation-cap" aria-hidden="true"><sup>+</sup></i> &nbsp; Alta autor</a>
+    <button class="btn btn-primary mt-2"     disabled>Siguiente página&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+</div>

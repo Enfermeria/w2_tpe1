@@ -1,0 +1,35 @@
+<!-- Filtro -->
+<div class="d-flex justify-content-center">
+    <form action="showLibros" method="POST" class="my-4">
+        Ordenar por:
+        <select name="cbordenar">
+            <option value="sin orden"               <?php if ($filtro->cbordenar == "sin orden" )            echo 'selected'?> >sin orden</option>
+            <option value="por titulo"              <?php if ($filtro->cbordenar == "por titulo"  )          echo 'selected'?> >por título</option>
+            <option value="por autor"               <?php if ($filtro->cbordenar == "por autor")             echo 'selected'?> >por autor </option>
+            <option value="por genero"              <?php if ($filtro->cbordenar == "por genero" )           echo 'selected'?> >por género</option>
+
+        </select>
+
+        Filtrar por:
+        <select name="cbfiltrar">
+            <option value="no filtrar"              <?php if ($filtro->cbfiltrar == "no filtrar"  )          echo 'selected'?> >no filtrar</option>
+            <option value="por titulo"              <?php if ($filtro->cbfiltrar == "por titulo"  )          echo 'selected'?> >por título</option>
+            <option value="por autor"               <?php if ($filtro->cbfiltrar == "por autor")             echo 'selected'?> >por autor </option>
+            <option value="por genero"              <?php if ($filtro->cbfiltrar == "por genero" )           echo 'selected'?> >por género</option>
+            <option value="edicion mayor"           <?php if ($filtro->cbfiltrar == "edicion mayor")         echo 'selected'?> >por edición mayor a</option>
+            <option value="edicion menor"           <?php if ($filtro->cbfiltrar == "edicion menor")         echo 'selected'?> >por edición menor a</option>
+            <option value="edicion igual"           <?php if ($filtro->cbfiltrar == "edicion igual")         echo 'selected'?> >por edición igual a</option>
+            <option value="edicion mayor o igual"   <?php if ($filtro->cbfiltrar == "edicion mayor o igual") echo 'selected'?> >por edición mayor o igual a</option>
+            <option value="edicion menor o igual"   <?php if ($filtro->cbfiltrar == "edicion menor o igual") echo 'selected'?> >por edición menor o igual a</option>
+        </select>
+        <input type="text" name="txtfiltro" size="30" value="<?=$filtro->txtfiltro?>">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-filter" aria-hidden="true"></i>&nbsp;Filtrar/Ordenar</button>
+    </form>
+</div>
+
+<!-- Botonera de navegación/alta -->
+<div class="d-flex justify-content-center">
+    <button class="btn btn-primary mt-2"  disabled><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Anterior página</button>
+    <a href="showAddLibro" class="btn btn-primary mt-2"><i class="fa fa-book" aria-hidden="true"><sup>+</sup></i> &nbsp; Alta libro</a>
+    <button class="btn btn-primary mt-2"  disabled>Siguiente página&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+</div>

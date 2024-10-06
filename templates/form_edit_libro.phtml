@@ -1,0 +1,69 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<h2>Editando un libro</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Género</th>
+            <th scope="col">Edición</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider"> 
+
+        <?php foreach($libros as $libro): ?>
+            <?php if ($idLibro == $libro->idlibro): //Si es el que edito muestro form?>
+                <tr que_id="<?=$libro->idlibro?>">
+                    <form action="editLibro/<?=$libro->idlibro?>" method="POST">                        
+                        <td data-label="Título">  <input type="text"   name="titulo"    value="<?=$libro->titulo?>"   required></td>
+                        <td data-label="Autor"> 
+                            <select required name="idautor" class="form-control">
+                                <?php foreach ($autores as $autor): ?>
+                                    <option value="<?=$autor->idautor?>" <?php if ($libro->idautor == $autor->idautor) echo 'selected'?> > 
+                                        <?=$autor->nombre?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
+                        <td data-label="Género"> 
+                            <select required name="idgenero" class="form-control">
+                                <?php foreach ($generos as $regGenero): ?>
+                                    <option value="<?=$regGenero->idgenero?>" <?php if ($libro->idgenero == $regGenero->idgenero) echo 'selected'?> > 
+                                        <?=$regGenero->genero?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
+                        <td data-label="Edición"><input type="number"   name="edicion"  value="<?=$libro->edicion?>" required></td>
+
+                        <td data-label="Acciones">
+                            <button type="submit"   class="btn btn-sm btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>
+                            &nbsp; 
+                            <a href="showLibros" class="btn btn-sm btn-secondary"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        </td>
+                    </form>
+                </tr>
+            <?php else: // si no es el que edit muestro fila normal de la tabla?>
+                <tr que_id="<?=$libro->idlibro?>">
+                    <td data-label="Título"><?=$libro->titulo?></td>
+                    <td data-label="Autor"><?=$libro->nombre?></td>
+                    <td data-label="Género"><?=$libro->genero?></td>
+                    <td data-label="Edición"><?=$libro->edicion?></td>
+
+                    <td data-label="Acciones">
+                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        &nbsp; 
+                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+                </tr>
+            <?php endif; ?> 
+        <?php endforeach; ?> 
+
+    </tbody>
+</table>
+
+
+
+
+<?php require 'templates/layout/footer.phtml' ?>

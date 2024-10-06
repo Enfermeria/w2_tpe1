@@ -1,0 +1,38 @@
+<?php require_once 'templates/layout/header.phtml' ?>
+
+<h2>Lista de Libros</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Género</th>
+            <th scope="col">Edición</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider"> 
+
+        <?php foreach($libros as $libro): ?>
+            <tr que_id="<?=$libro->idlibro?>">
+                <td data-label="Título"><?=$libro->titulo?></td>
+                <td data-label="Autor"><a href="showLibrosxAutor/<?=$libro->idautor?>">    <?=$libro->nombre?> </a></td>
+                <td data-label="Género"><a href="showLibrosxGenero/<?=$libro->idgenero?>"> <?=$libro->genero?> </a></td>
+                <td data-label="Edición"><?=$libro->edicion?></td>
+                <td data-label="Acciones">
+                    <a href="showEditLibro/<?=$libro->idlibro?>"   class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    &nbsp; 
+                    <a href="showDeleteLibro/<?=$libro->idlibro?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        <?php endforeach; ?> 
+
+    </tbody>
+</table>
+
+<p class="mt-3"><small>Mostrando <?=$count?> libros</small></p>
+<p id="mensaje"></p>
+
+<?php require_once 'templates/barra_inferior_libros.phtml' ?>
+
+<?php require_once 'templates/layout/footer.phtml' ?>

@@ -1,0 +1,50 @@
+<?php require_once 'templates/layout/header.phtml' ?>
+
+<h2>Mostrando un autor:</h2>
+
+<div class="column">
+    <div class="col-9">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input required name="nombre" type="text" class="form-control" readonly value="<?=$autor->nombre?>">
+        </div>
+    </div>
+</div>
+
+<div class="column">
+    <div class="col-9">
+        <div class="form-group">
+            <label>Biografía</label>
+            <textarea name="biografia" rows="3" class="form-control" readonly><?=$autor->biografia?></textarea>
+        </div>
+    </div>
+</div>
+
+
+<!-- listado de libros de ese autor -->
+<h3>Lista de Libros del autor</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Género</th>
+            <th scope="col">Edición</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider"> 
+        <?php foreach($libros as $libro): ?>
+            <tr que_id="<?=$libro->idlibro?>">
+                <td data-label="Título"><?=$libro->titulo?></td>
+                <td data-label="Género"><?=$libro->genero?></td>
+                <td data-label="Edición"><?=$libro->edicion?></td>
+            </tr>
+        <?php endforeach; ?> 
+    </tbody>
+</table>
+
+<p class="mt-3"><small>Mostrando <?=$count?> libros</small></p>
+
+<a href="showAutores" class="btn btn-primary mt-2"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> &nbsp; Volver a Autores</a>
+
+
+<?php require_once 'templates/layout/footer.phtml' ?>

@@ -1,0 +1,30 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<h2>Alta de nuevo autor:</h2>
+
+<!-- formulario de alta de carreras -->
+<form action="addAutor" method="POST" class="my-4">
+    <div class="column">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input required name="nombre" type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Biografía</label>
+                <input required name="biografia" type="text" size="100" class="form-control">
+            </div>
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-success mt-2"><i class="fa fa-check" aria-hidden="true"></i> &nbsp; Alta</button>
+    <a href="showAutor" class="btn btn-primary mt-2"><i class="fa fa-times" aria-hidden="true"></i> &nbsp; Cancelar</a>
+</form>
+
+<?php require 'templates/layout/footer.phtml' ?>

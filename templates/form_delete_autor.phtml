@@ -1,0 +1,29 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<h2>Está por eliminar el autor:</h2>
+
+<!-- formulario de confirmación de borrado de autor -->
+<form action="deleteAutor/<?=$autor->idautor?>" method="POST" class="my-4">
+    <div class="column">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input required name="nombre" type="text" class="form-control" value="<?=$autor->nombre?>" readonly>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label>Biografía</label>
+                <input required name="biografia" type="text" class="form-control" value="<?=$autor->biografia?>" size="100" readonly>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit"  class="btn btn-primary btn-danger mt-2">Eliminar</button>
+    <a href="showAutores" class="btn btn-primary mt-2">Cancelar</a>
+</form>
+
+<?php require 'templates/layout/footer.phtml' ?>

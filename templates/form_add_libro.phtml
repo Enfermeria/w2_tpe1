@@ -1,0 +1,53 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<h2>Alta de nuevo libro:</h2>
+
+<!-- formulario de alta de libro -->
+<form action="addLibro" method="POST" class="my-4">
+    <div class="column">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Título</label>
+                <input required name="titulo" type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label>Autor</label>
+                <select required name="idautor" class="form-control">
+                    <?php foreach ($autores as $autor): ?>
+                        <option value="<?=$autor->idautor?>"><?=$autor->nombre?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="form-group">
+                <label>Género</label>
+                <select required name="idgenero" class="form-control">
+                    <?php foreach ($generos as $regGenero): ?>
+                        <option value="<?=$regGenero->idgenero?>"><?=$regGenero->genero?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="col-2">
+            <div class="form-group">
+                <label>Edición</label>
+                <input required name="edicion" type="number" class="form-control">
+            </div>
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-success mt-2"><i class="fa fa-check" aria-hidden="true"></i> &nbsp; Alta</button>
+    <a href="showLibros" class="btn btn-primary mt-2"><i class="fa fa-times" aria-hidden="true"></i> &nbsp; Cancelar</a>
+</form>
+
+<?php require 'templates/layout/footer.phtml' ?>

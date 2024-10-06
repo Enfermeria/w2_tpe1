@@ -1,0 +1,33 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<h2>Lista de Generos</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Género</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider"> 
+
+        <?php foreach($generos as $regGenero): ?>
+            <tr que_id="<?=$regGenero->idgenero?>">
+                <td data-label="Género"> <a href="showLibrosxGenero/<?=$regGenero->idgenero?>"> <?=$regGenero->genero?> </a> </td>
+
+                <td data-label="Acciones">
+                    <a href="showEditGenero/<?=$regGenero->idgenero?>"   class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    &nbsp; 
+                    <a href="showDeleteGenero/<?=$regGenero->idgenero?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        <?php endforeach; ?> 
+
+    </tbody>
+</table>
+
+<p class="mt-3"><small>Mostrando <?=$count?> generos</small></p>
+<p id="mensaje"></p>
+
+<?php require 'templates/barra_inferior_generos.phtml' ?>
+
+<?php require 'templates/layout/footer.phtml' ?>

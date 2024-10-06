@@ -1,0 +1,43 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<h2>Está por eliminar el libro:</h2>
+
+<!-- formulario de confirmación de borrado de libro -->
+<form action="deleteLibro/<?=$libro->idlibro?>" method="POST" class="my-4">
+    <div class="column">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Título</label>
+                <input required name="titulo" type="text" class="form-control" value="<?=$libro->titulo?>" readonly>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label>Autor</label>
+                <input required name="nombre" type="text" class="form-control" value="<?=$libro->nombre?>" readonly>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="form-group">
+                <label>Género</label>
+                <input required name="genero" type="text" class="form-control" value="<?=$libro->genero?>" readonly>
+            </div>
+        </div>
+
+        <div class="col-2">
+            <div class="form-group">
+                <label>Edición</label>
+                <input required name="edicion" type="number" class="form-control" value="<?=$libro->edicion?>" readonly>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit"   class="btn btn-primary btn-danger mt-2">Eliminar</button>
+    <a href="showLibros" class="btn btn-primary mt-2">Cancelar</a>
+</form>
+
+<?php require 'templates/layout/footer.phtml' ?>
