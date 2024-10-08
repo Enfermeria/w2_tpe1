@@ -108,6 +108,9 @@ Entrega:    18 DE OCTUBRE
 require_once './app/controllers/libros.controller.php';
 require_once './app/controllers/generos.controller.php';
 require_once './app/controllers/autores.controller.php';
+require_once './app/controllers/login.controller.php';
+
+session_start(); //inicia la sesión para manejar el login/logout
 
 // base_url para redirecciones y base tag
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -174,8 +177,13 @@ switch ($params[0]) {
         $controllerLibro -> showAddLibro();
         break;
     case 'addLibro':
-        $controllerLibro = new LibrosController();
-        $controllerLibro -> addRegister();
+        if(isset($_SESSION['idusuario'])) {
+             $controllerLibro = new LibrosController();
+            $controllerLibro -> addRegister();
+        }
+        else{
+            header("Location: ".BASE_URL."login");
+        }
         break;
     
     case 'showEditLibro':
@@ -183,8 +191,13 @@ switch ($params[0]) {
         $controllerLibro->showEditLibro($params[1]);
         break; 
     case 'editLibro':
-        $controllerLibro = new LibrosController();
-        $controllerLibro->editRegister($params[1]);
+        if(isset($_SESSION['idusuario'])) {
+            $controllerLibro = new LibrosController();
+            $controllerLibro->editRegister($params[1]);
+        }
+        else{
+            header("Location: ".BASE_URL."login");
+        }
         break; 
 
     case 'showDeleteLibro':
@@ -192,8 +205,13 @@ switch ($params[0]) {
         $controllerLibro->showDeleteLibro($params[1]);
         break;
     case 'deleteLibro':
-        $controllerLibro = new LibrosController();
-        $controllerLibro->deleteRegister($params[1]);
+        if(isset($_SESSION['idusuario'])) {
+            $controllerLibro = new LibrosController();
+            $controllerLibro->deleteRegister($params[1]);
+        }
+        else{
+            header("Location: ".BASE_URL."login");
+        }
         break;
 
 
@@ -208,8 +226,13 @@ switch ($params[0]) {
         $controllerAutor -> showAddAutor();
         break;
     case 'addAutor':
-        $controllerAutor = new AutoresController();
-        $controllerAutor -> addRegister();
+        if(isset($_SESSION['idusuario'])) {
+            $controllerAutor = new AutoresController();
+            $controllerAutor -> addRegister();
+        }
+        else{
+            header("Location: ".BASE_URL."login");
+        }
         break;
     
     case 'showEditAutor':
@@ -217,8 +240,13 @@ switch ($params[0]) {
         $controllerAutor->showEditAutor($params[1]);
         break; 
     case 'editAutor':
-        $controllerAutor = new AutoresController();
-        $controllerAutor->editRegister($params[1]);
+        if(isset($_SESSION['idusuario'])) {
+            $controllerAutor = new AutoresController();
+            $controllerAutor->editRegister($params[1]);
+        }
+        else{
+            header("Location: ".BASE_URL."login");
+        }
         break; 
 
     case 'showDeleteAutor':
@@ -226,8 +254,13 @@ switch ($params[0]) {
         $controllerAutor->showDeleteAutor($params[1]);
         break;
     case 'deleteAutor':
-        $controllerAutor = new AutoresController();
-        $controllerAutor->deleteRegister($params[1]);
+        if(isset($_SESSION['idusuario'])) {
+            $controllerAutor = new AutoresController();
+            $controllerAutor->deleteRegister($params[1]);
+        }
+        else{
+            header("Location: ".BASE_URL."login");
+        }
         break;
 
         
@@ -242,8 +275,13 @@ switch ($params[0]) {
         $controllerGenero -> showAddGenero();
         break;
     case 'addGenero':
-        $controllerGenero = new GenerosController();
-        $controllerGenero -> addRegister();
+        if(isset($_SESSION['idusuario'])) {
+            $controllerGenero = new GenerosController();
+            $controllerGenero -> addRegister();
+        }
+        else{
+            header("Location: ".BASE_URL."login");
+        }
         break;
     
     case 'showEditGenero':
@@ -251,8 +289,13 @@ switch ($params[0]) {
         $controllerGenero->showEditGenero($params[1]);
         break; 
     case 'editGenero':
-        $controllerGenero = new GenerosController();
-        $controllerGenero->editRegister($params[1]);
+        if(isset($_SESSION['idusuario'])) {
+            $controllerGenero = new GenerosController();
+            $controllerGenero->editRegister($params[1]);
+        }
+        else{
+            header("Location: ".BASE_URL."login");
+        }
         break; 
 
     case 'showDeleteGenero':
@@ -260,10 +303,31 @@ switch ($params[0]) {
         $controllerGenero->showDeleteGenero($params[1]);
         break;
     case 'deleteGenero':
-        $controllerGenero = new GenerosController();
-        $controllerGenero->deleteRegister($params[1]);
+        if(isset($_SESSION['idusuario'])) { //verifica que el usuario este logueado
+            $controllerGenero = new GenerosController();
+            $controllerGenero->deleteRegister($params[1]);
+        }
+        else { //si no lo está, lo lleva al login
+            header("Location: ".BASE_URL."login");
+        }
         break;
     
+    /******************* LOGIN **************/
+
+    case 'login':
+        $controllerLogin = new LoginController();
+        $controllerLogin->showLogin();
+        break;
+
+    case 'validarlogin':
+        $controllerLogin = new LoginController();
+        $controllerLogin->validateLogin();
+        break;
+
+    case 'logout':
+        $controllerLogin = new LoginController();
+        $controllerLogin->logOut();
+        break;
 
     default: 
         echo "404 Page Not Found";

@@ -1,6 +1,6 @@
 -- Creo la bd.
 CREATE database w2_tpe_libros;
-SH0W databases;
+
 USE w2_tpe_libros;
 
 
@@ -31,6 +31,13 @@ CREATE TABLE `w2_tpe_libros`.`genero` (
     PRIMARY KEY (`idgenero`)
 ) ENGINE = InnoDB;
 
+CREATE TABLE `w2_tpe_libros`.`usuarios` (
+    `idusuario` INT NOT NULL AUTO_INCREMENT ,
+    `nombre` VARCHAR(45) NOT NULL , 
+    `contraseña` VARCHAR(45) NOT NULL ,
+    PRIMARY KEY (`idusuario`)
+) ENGINE = InnoDB;
+
 
 -- Relaciones entre tablas
 ALTER TABLE `libro`
@@ -56,7 +63,7 @@ INSERT INTO `genero` (`idgenero`, `genero`) VALUES
 INSERT INTO `autor` (`idautor`, `nombre`, `biografia`) VALUES 
     (NULL, 'Aguinis, M', ''), 
     (NULL, 'Agustí, I', ''),
-    VALUES (NULL, 'Alas Clarín, L', ''), 
+    (NULL, 'Alas Clarín, L', ''), 
     (NULL, 'Alcott, Louise M.', ''), 
     (NULL, 'Alexaindre, V', ''), 
     (NULL, 'Allende, Isabel', ''), 
@@ -76,3 +83,5 @@ INSERT INTO `libro` (`idlibro`, `titulo`, `idautor`, `idgenero`, `edicion`, `arg
     (NULL, 'Asesinato en el Orient Expresss', '8', '11', '1987', ''), 
     (NULL, 'Maldad bajo el sol', '8', '11', '1983', '');
 
+INSERT INTO `usuarios` (`idusuario`, `nombre`, `contraseña`) VALUES 
+    (NULL, 'webadmin', 'admin');

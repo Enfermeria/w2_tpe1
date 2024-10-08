@@ -4,7 +4,7 @@ Falta hacer:
 - agregar paginación
 - agregar fotos a autor (tanto la carga como mostrarla)
 - agregar authoring
-- agregar administración de usuarios: tabla usuarios, crud usuarios
+- agregar administración de usuarios: crud usuarios
 - agregar config.php para la base de datos
 - poner fotos de fondo decorativas según secciones (una bibliotea para libros, un autor escribiendo para autores, algo alusivo para géneros)
 - sanitizar todas las salidas
