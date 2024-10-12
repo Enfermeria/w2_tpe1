@@ -15,9 +15,15 @@
                 <td data-label="Género"> <a href="showLibrosxGenero/<?=$regGenero->idgenero?>"> <?=$regGenero->genero?> </a> </td>
 
                 <td data-label="Acciones">
-                    <a href="showEditGenero/<?=$regGenero->idgenero?>"   class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    &nbsp; 
-                    <a href="showDeleteGenero/<?=$regGenero->idgenero?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    <?php if (isset($_SESSION['idusuario'])): //si esta logueado ?>
+                        <a href="showEditGenero/<?=$regGenero->idgenero?>"   class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        &nbsp; 
+                        <a href="showDeleteGenero/<?=$regGenero->idgenero?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    <?php else: // no está logueado ?>
+                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                        &nbsp; 
+                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    <?php endif; ?>
                 </td>
             </tr>
         <?php endforeach; ?> 

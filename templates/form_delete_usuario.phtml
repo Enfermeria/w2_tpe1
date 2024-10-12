@@ -1,0 +1,15 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<<h2>Está por eliminar el usuario:</h2>
+
+<!-- formulario de confirmación de borrado de usuario -->
+<form method='POST' action='deleteUsuario/<?=$usuario->idusuario?>'>
+    <div class='form-group'>
+        <label for='nombreusuario'>Usuario</label>
+        <input type='text' class='form-control' id='nombreusuario' name='nombreusuario' value="<?=$usuario->nombreusuario?>" required readonly>
+    </div>
+    <button type="submit" class="btn btn-primary btn-danger mt-2">Eliminar</button>
+    <a href="showUsuarios" class="btn btn-primary mt-2">Cancelar</a>
+</form>
+
+<?php require 'templates/layout/footer.phtml' ?>

@@ -44,7 +44,7 @@
                         </td>
                     </form>
                 </tr>
-            <?php else: // si no es el que edit muestro fila normal de la tabla?>
+            <?php else: // si no es el que edito muestro fila normal de la tabla?>
                 <tr que_id="<?=$libro->idlibro?>">
                     <td data-label="Título"><?=$libro->titulo?></td>
                     <td data-label="Autor"><?=$libro->nombre?></td>
@@ -52,9 +52,9 @@
                     <td data-label="Edición"><?=$libro->edicion?></td>
 
                     <td data-label="Acciones">
-                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                         &nbsp; 
-                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 </td>
                 </tr>
             <?php endif; ?> 

@@ -1,13 +1,9 @@
-.item-pago {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-li.finished .label {
-    opacity: .4;
-    text-decoration: line-through;
-}
+body { /* como el menú está fijado al top, dejo un espacio para que no tape los títulos */
+    min-height: 75rem;
+    padding-top: 3.5rem;
+  }
+  
 
 td {
     text-align: center;

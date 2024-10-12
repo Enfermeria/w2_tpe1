@@ -1,0 +1,17 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<h2>Cambio de clave del usuario:</h2>
+
+<!-- formulario de alta de usuario -->
+<form method='POST' action='editUsuario'>
+    <div class='form-group'>
+        <label for='nombreusuario'>Usuario</label>
+        <input type='text' class='form-control' id='nombreusuario' name='nombreusuario' value="<?=$usuario->nombreusuario?>" required readonly>
+    </div>
+    <div class='form-group'>
+        <label for='password'>Nueva Password</label>
+        <input type='password' class='form-control' id='password' name='password' required>
+    </div>
+    <button type='submit' class='btn btn-primary mt-3'><i class="fa fa-check" aria-hidden="true"></i> &nbsp; Cambiar</button>
+    <a href="showUsuarios" class="btn btn-primary mt-3"><i class="fa fa-times" aria-hidden="true"></i> &nbsp; Cancelar</a>
+</form> 

@@ -1,0 +1,25 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<div class="mt-5 w-25 mx-auto">
+    <!-- mensaje de error (si existe) -->
+    <?php if ($error): ?>
+        <div class='alert alert-danger' role='alert'>
+            <?= $error ?>
+        </div>
+    <?php endif ?>
+
+    <!-- formulario de login -->
+    <form method='POST' action='login'>
+        <div class='form-group'>
+            <label for='nombreusuario'>Usuario</label>
+            <input type='text' class='form-control' id='nombreusuario' name='nombreusuario' required>
+        </div>
+        <div class='form-group'>
+            <label for='password'>Password</label>
+            <input type='password' class='form-control' id='password' name='password' required>
+        </div>
+        <button type='submit' class='btn btn-primary mt-3'>Login</button>
+    </form>
+</div>
+
+<?php require 'templates/layout/footer.phtml' ?>

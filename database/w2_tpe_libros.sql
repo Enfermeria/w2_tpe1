@@ -11,7 +11,6 @@ CREATE TABLE `w2_tpe_libros`.`libro` (
     `idautor` INT NOT NULL , 
     `idgenero` INT NOT NULL ,
     `edicion` INT(4) NOT NULL ,
-    `argumento` VARCHAR(300) NOT NULL ,
     PRIMARY KEY (`idlibro`), 
     INDEX `idx_idautor` (`idautor`), 
     INDEX `idx_idgenero` (`idgenero`)
@@ -33,8 +32,8 @@ CREATE TABLE `w2_tpe_libros`.`genero` (
 
 CREATE TABLE `w2_tpe_libros`.`usuarios` (
     `idusuario` INT NOT NULL AUTO_INCREMENT ,
-    `nombre` VARCHAR(45) NOT NULL , 
-    `contraseña` VARCHAR(45) NOT NULL ,
+    `nombreusuario` VARCHAR(45) NOT NULL , 
+    `passwordhash` VARCHAR(45) NOT NULL ,
     PRIMARY KEY (`idusuario`)
 ) ENGINE = InnoDB;
 
@@ -83,5 +82,5 @@ INSERT INTO `libro` (`idlibro`, `titulo`, `idautor`, `idgenero`, `edicion`, `arg
     (NULL, 'Asesinato en el Orient Expresss', '8', '11', '1987', ''), 
     (NULL, 'Maldad bajo el sol', '8', '11', '1983', '');
 
-INSERT INTO `usuarios` (`idusuario`, `nombre`, `contraseña`) VALUES 
-    (NULL, 'webadmin', 'admin');
+INSERT INTO `usuarios` (`idusuario`, `nombreusuario`, `passwordhash`) VALUES 
+    (NULL, 'webadmin', '$2y$10$67nxutfzKcvs8cLHyG1oAO5mEZ7W2hIxjl462m9HQ4IdqoqT88Wj.'); -- clave admin

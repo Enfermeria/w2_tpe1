@@ -14,7 +14,13 @@
 
 <!-- Botonera de navegación/alta -->
 <div class="d-flex justify-content-center">
-    <button class="btn btn-primary mt-2"     disabled><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Anterior página</button>
-    <a href="showAddAutor" class="btn btn-primary mt-2"><i class="fa fa-graduation-cap" aria-hidden="true"><sup>+</sup></i> &nbsp; Alta autor</a>
+    <button class="btn btn-primary mt-2"     disabled><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Anterior página</button> &nbsp;
+
+    <?php if (isset($_SESSION['idusuario'])): //si esta logueado ?>
+        <a href="showAddAutor" class="btn btn-primary mt-2"><i class="fa fa-graduation-cap" aria-hidden="true"><sup>+</sup></i> &nbsp; Alta autor</a> &nbsp;
+    <?php else: // no está logueado ?>
+        <button disabled class="btn btn-primary mt-2"><i class="fa fa-graduation-cap" aria-hidden="true"><sup>+</sup></i> &nbsp; Alta autor</button> &nbsp;
+    <?php endif; ?>
+
     <button class="btn btn-primary mt-2"     disabled>Siguiente página&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 </div>

@@ -1,56 +1,87 @@
 <?php
-require_once './app/models/login.model.php';
-require_once './app/models/login.view.php';
-require_once '.app/views/general.view.php';
+require_once 'app/models/usuarios.model.php';
+require_once 'app/views/login.view.php';
 
 class LoginController{
     private $model;
     private $view;
-    private $generalView;
+
 
     public function __construct() {
-
-        session_start(); //inicio la sesion para poder controlar desde cualquier pagina del sistema si el usuario esta logueado
-
-        $this->model = new LoginModel();
+        $this->model = new UsuariosModel();
         $this->view = new LoginView();
-        $this->generalView = new GeneralView();
-    }
-    public function showLogin() {
 
-        $this->view->displayLogin(); //muestro el formulario de login
-    }
+        $this->iniciarSesion();
+    } // constructor
 
-    // iniciar sesion
 
-    public function login() {
-        if(!empty($_POST['username']) && !empty($_POST['password'])) { //compruebo que el usuario haya rellenado los campos necesarios
-            $formUser = $_POST['username'];
-            $formPassword = $_POST['password'];
 
-            $dbUser = $this->model->getUsername($formUser);
-            $dbPassword = $this->model->getPassword($formPassword);
-
-            if(($dbUser == $formUser) && ($dbPassword == $formPassword)) { //verifico que los datos sean correctos
-                $_SESSION['idusuario'] = $dbUser->id;
-                $_SESSION['nombre'] = $dbUser->username;
-
-                header("Location: ".BASE_URL."showLibros");
-
-            } else {
-                //si los datos no coinciden
-                $this->generalView->showError("Usuario o contraseña incorrectos");
-            }
+    public function iniciarSesion(){
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start(); 
         }
-    } //iniciar sesion
+    } // iniciarSesion
 
-    //cerrar sesion
 
-    public function logout() {
+
+    public function showLogin() {
+        $this->view->showLogin(); //muestro el formulario de login
+    } // showLogin
+
+
+
+    public function login() { 
+         //verifico si todos los campos están
+        if (!isset($_POST['nombreusuario']) || empty($_POST['nombreusuario']))
+            return $this->view->showLogin('Falta completar el nombre de usuario');
+        if (!isset($_POST['password']) || empty($_POST['password']))
+            return $this->view->showLogin('Falta completar la contraseña');
+        
+        //obtengo los datos de los campos Posteados
+        $nombreUsuario = $_POST['nombreusuario'];
+        $password = $_POST['password'];
+
+        //verifico si existe ese nombreUsuario en la bd
+        $usuario = $this->model->getByNombre($nombreUsuario); // busco el usuario
+
+        if ($usuario && password_verify($password, $usuario->passwordhash)) {
+            // aca lo autentiqué
+            $_SESSION['idusuario'] = $usuario->idusuario;
+            $_SESSION['nombreusuario'] = $usuario->nombreusuario; 
+            header('Location: ' . BASE_URL);
+        } else {
+            session_destroy(); // destruye todos los datos almacenados de la sesión
+            session_start();   // inicia nueva sesión
+            $this->view->showLogin('Usuario o contraseña inválidos');
+        }
+    } // login
+
+
+
+    public function logout() { // cerrar sesión
+       $this->verifyLogged(); // verifica que esté logueado, si no lo manda a loguearse
 
         session_destroy();
-        header("Location: ". BASE_URL . "login");
+        header("Location: ". BASE_URL);
+    } // logout
 
-    } //cerrar sesion
+
+
+    public function isLogged() {
+        $this->iniciarSesion(); //por las dudas inicia sesión
+        if (isset($_SESSION['idusuario']))
+            return true;
+        else
+            return false;
+    } //estaLogueado
+
+
+
+    public function verifyLogged() { // verifica que esté logueado, sino lo manda a loguearse
+        if (!$this->isLogged()) {
+            header('Location: ' . BASE_URL . 'showLogin');
+            die();
+        }
+    }
 
 }// class LoginController
