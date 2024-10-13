@@ -1,0 +1,43 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<h2>Edición de de autor:</h2>
+
+<!-- formulario de edición de imagen de autor -->
+<form action="editAutor/<?=$autor->idautor?>" method="POST" class="my-4" enctype="multipart/form-data"> 
+    <div class="column">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input required name="nombre" type="text" class="form-control" value="<?=$autor->nombre?>">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Biografía</label>
+                <input required name="biografia" type="text" size="100" class="form-control" value="<?=$autor->biografia?>">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-9">
+            <div class="form-group">
+                <?php if ($autor->imagen): //si tiene imagen?>
+                    <label for="imagen">Imagen del autor</label>
+                    <img src="<?=$autor->imagen?>" alt="Imagen del autor" >
+                <?php else: // si no tiene imagen?>
+                    <label>(SIN IMAGEN DE AUTOR)</label>
+                <?php endif;?>
+                <input type="file" name="imagen" id="imagen">
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-2"><i class="fa fa-check" aria-hidden="true"></i> &nbsp; Cambiar</button>
+    <a href="showAutores" class="btn btn-primary mt-2"><i class="fa fa-times" aria-hidden="true"></i> &nbsp; Cancelar</a>
+</form>
+
+<?php require 'templates/layout/footer.phtml' ?>

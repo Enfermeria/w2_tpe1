@@ -2,8 +2,8 @@
 
 <h2>Alta de nuevo autor:</h2>
 
-<!-- formulario de alta de carreras -->
-<form action="addAutor" method="POST" class="my-4">
+<!-- formulario de alta de autor -->
+<form action="addAutor" method="POST" class="my-4" enctype="multipart/form-data"> 
     <div class="column">
         <div class="col-9">
             <div class="form-group">
@@ -20,7 +20,15 @@
                 <input required name="biografia" type="text" size="100" class="form-control">
             </div>
         </div>
+    </div>
 
+    <div class="row">
+        <div class="col-9">
+            <div class="form-group">
+                <label for="imagen">Imagen del autor</label>
+                <input type="file" name="imagen" id="imagen">
+            </div>
+        </div>
     </div>
 
     <button type="submit" class="btn btn-success mt-2"><i class="fa fa-check" aria-hidden="true"></i> &nbsp; Alta</button>

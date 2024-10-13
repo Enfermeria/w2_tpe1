@@ -45,25 +45,52 @@ class AutoresModel extends Model {
     } //getFiltradoPorDuracionMayor
 
 
-    function insert($nombre, $biografia) {
-        $query = $this->db->prepare('INSERT INTO autor (nombre, biografia) VALUES (?, ?)');
+    function insert($nombre, $biografia, $imagen=null) {
+        $query = $this->db->prepare('INSERT INTO autor (nombre, biografia) VALUES (?, ?)'); // inserto autor SIN IMAGEN
         $query->execute([$nombre, $biografia]);
      
-        $id = $this->db->lastInsertId();
+        $id = $this->db->lastInsertId(); //averiguo el id generado
+        
+        if ($imagen) { // si me pasaron un parámetro de imagen, actualizo la imagen con el id como parte del nombre
+            $filepath = $this->moveFile($id, $imagen);
+    
+            $query = $this->db->prepare('UPDATE autor SET imagen=? WHERE idautor=?'); 
+            $query->execute([$filepath, $id]);    
+        }
      
         return $id;
     } // insert
      
-     
+
+    private function moveFile($id, $imagen) {
+        $filepath = "images/autores/autor" . $id . "." . strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));  
+        move_uploaded_file($imagen['tmp_name'], $filepath); //muevo la imagen del area temporal a su lugar definitivo.
+        return $filepath;
+    } //moveFile
+
+    
     function delete($idAutor) {
+        //borro la imagen asociada (si existe)
+        $autor = $this->get($idAutor);
+        if ($autor->imagen) 
+            unlink($autor->imagen);
+
+        //borro el registro
         $query = $this->db->prepare('DELETE FROM autor WHERE idautor = ?');
         $query->execute([$idAutor]);
     } //delete
      
      
-    function update($idAutor, $nombre, $biografia) { 
-        $query = $this->db->prepare('UPDATE autor SET nombre=?, biografia=? WHERE idAutor = ?');
-        $query->execute([$nombre, $biografia, $idAutor]);
+    function update($idAutor, $nombre, $biografia, $imagen=null) { 
+        if ($imagen) { // si me pasaron un parámetro de imagen, actualizo la imagen con el id como parte del nombre
+            $filepath = $this->moveFile($idAutor, $imagen);
+            
+            $query = $this->db->prepare('UPDATE autor SET nombre=?, biografia=?, imagen=? WHERE idautor=?'); 
+            $query->execute([$nombre, $biografia, $filepath, $idAutor]);    
+        } else { //no me pasaron imagen, no actualizo imagen
+            $query = $this->db->prepare('UPDATE autor SET nombre=?, biografia=? WHERE idAutor = ?');
+            $query->execute([$nombre, $biografia, $idAutor]);
+        }
     } //update
      
 }

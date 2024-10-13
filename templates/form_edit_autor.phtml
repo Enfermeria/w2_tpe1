@@ -2,7 +2,7 @@
 
 <h2>Editando un Autor</h2>
 
-<table class="table table-bordered" style="white-space: nowrap; overflow-x: auto;">
+<table class="table table-bordered" >
     <thead>
         <tr>
             <th scope="col">Nombre</th>
@@ -16,20 +16,21 @@
             <?php if ($idAutor == $autor->idautor): //Si es el que edito muestro form?>
                 <tr que_id="<?=$autor->idautor?>">
                     <form action="editAutor/<?=$autor->idautor?>" method="POST">                        
-                        <td data-label="Nombre">   <input type="text" name="nombre"    value="<?=$autor->nombre?>"    size="45" required></td>
+                        <td data-label="Nombre">   <input type="text" name="nombre"    value="<?=$autor->nombre?>"    size="40" required></td>
                         <td data-label="Biografía"><input type="text" name="biografia" value="<?=$autor->biografia?>" size="100" ></td>
-                        
+
                         <td data-label="Acciones">
                             <button type="submit"   class="btn btn-sm btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>
                             &nbsp; 
                             <a href="showAutores" class="btn btn-sm btn-secondary"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            <i class="fa-solid fa-image-portrait"></i>
                         </td>
                     </form>
                 </tr>
             <?php else : // si no es el que edit muestro fila normal de la tabla?>
                 <tr que_id="<?=$autor->idautor?>">
                     <td data-label="Nombre"><?=$autor->nombre?></td>
-                    <td data-label="Biografía"><?=substr($autor->biografia, 0, 150)?></td>
+                    <td data-label="Biografía"><?=substr($autor->biografia, 0, 100)?></td>
 
                     <td data-label="Acciones">
                         <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>

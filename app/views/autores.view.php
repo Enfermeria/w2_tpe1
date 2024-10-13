@@ -21,6 +21,11 @@ class AutoresView{
     } //showFormEditAutor
 
 
+    function showFormEditImagenAutor($autor){ // Muestro el formulario de edición de un autor
+        require_once 'templates/form_edit_imagen_autor.phtml';
+    } //showFormEditAutor
+
+
     function showFormDeleteAutor($autor){ // muestro el formulario de confirmación de borrado de un autor
         require_once 'templates/form_delete_autor.phtml';
     } //showFormDeleteAutor

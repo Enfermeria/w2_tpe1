@@ -14,11 +14,18 @@ Si hacemos click en un autor, nos redirige a una pantalla con los datos del auto
 
 Este funcionamiento es consistente y homogéneo a todas las tablas que se muestran en el menú superior: Libros, Géneros, Autores y Usuarios (este último sólo aparece si hay un usuario correctamente logueado). Además hay una opción del menú para hacer Login (o si un usuario ya estuviera loguedaado, la opción Logout, además de aparecer el nombre del usuario logueado a la derecha).
 
-Al hacer click en el menú Autores se visualiza la lista de autores y su respectiva biografía. Si además hacemos click en un autor en particular, se visualiza los datos respectivos del mismo, junto con su foto (si la tuviera) y la lista de libros escritos por el mismo. El funcionamiento de la Edición, Borrado, Alta de nuevos autores y Filtrado de la tabla es similar a lo ya explicado para la lista de libros. Debe tenerse en cuenta que al borrar un autor, se verifica que no haya libros que pertenezcan a dicho autor, sino no lo permite hasta que se eliminen dichos libros o se les cambie el autor.
+Al hacer click en el menú Autores se visualiza la lista de autores y su respectiva biografía. Si además hacemos click en un autor en particular, se visualiza los datos respectivos del mismo, junto con su foto (si la tuviera) y la lista de libros escritos por el mismo. El funcionamiento de la Edición, Borrado, Alta de nuevos autores y Filtrado de la tabla es similar a lo ya explicado para la lista de libros. Debe tenerse en cuenta que al borrar un autor, se verifica que no haya libros que pertenezcan a dicho autor, sino no lo permite hasta que se eliminen dichos libros o se les cambie el autor. Cuando se da de alta un autor o se modifica los datos del mismo, se puede cargar una imagen de dicho autor.
 
 La opción Géneros del menú superior muestra la lista de géneros respectivos. Al hacer click en un género en particular, muestra la lista de libros correspondientes a dicho género. La Edición, Borrado y Alta de nuevos géneros es similar a lo ya explicado para los libros. Debe tenerse en cuenta que para el borrado de un género se verifica que no haya libros que pertenezcan a dicho género, sino no lo permite hasta que se borren dichos libros o se les cambie el género. 
 
 La opción Usuario del menú superior sólo aparece si hay un usuario logueado. Esto muestra la lista de usuarios, permitiendo borrar usuarios, dar de alta nuevos usuarios o cambiar la clave de alguno de ellos. Debe tomarse en cuenta que no se permite borrar el último usuario (porque no habría usuarios que se pudieran loguear) ni borrar el usuario que se encuentra actualmente logueado.
+
+  * Se incluye la opción de Config.php y AutoDeploy. 
+  * Todo el sistema usa el patrón MVC. 
+  * Los HTML se muestran con plantillas PHTML. 
+  * Las url son semánticas. 
+  * Se incluye el SQL para la instalación de la base de datos (si no se desa usar el AutoDeploy)
+  * Se incluye un usario "webadmin" con clave "admin"
 
 # Tablas
 La tabla libro contiene:

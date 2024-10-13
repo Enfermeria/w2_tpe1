@@ -34,11 +34,21 @@ class AutoresController{
             $biografia = ''; // como no es obligatorio, si no está, se permite en blanco
         else
             $biografia = $_POST['biografia'];
-    
+
+        // Verifico si subió la imagen (en Files)
+        if ($_FILES['imagen']['name']) { //subio imagen, si todo ok, inserto datos con imagen
+            if ($_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/png") {    
+                $id = $this->modelAutor->insert($nombre, $biografia, $_FILES['imagen']); //inserto los datos con imagen en la bd
+            }
+            else {
+                $this->generalView->showError("Formato de imagen no aceptado");
+                die();
+            }
+        }
+        else { // no subio la imagen, inserto datos sin imagen
+            $id = $this->modelAutor->insert($nombre, $biografia); //inserto los datos en la bd.
+        }
         
-        //inserto los datos en la bd.
-        $id = $this->modelAutor->insert($nombre, $biografia);
-    
         //redirijo al home
         header('Location: ' . BASE_URL . '/' . URL_AUTORES);
     } //addRegister
@@ -61,9 +71,21 @@ class AutoresController{
         $autor = $this->modelAutor->get($idAutor); 
         if (!$autor)  //si el registro no existe, devuelve un false, sino devuelve el objeto con la libro
             return $this->generalView->showError("No existe el autor con el idautor=$idAutor");
-    
+        
+        //verfico si subió alguna imagen (en Files)
+        if ($_FILES['imagen']['name']) { //subio imagen, si todo ok, edito datos con imagen
+            if ($_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/png") 
+                $id = $this->modelAutor->update($idAutor, $nombre, $biografia, $_FILES['imagen']); //modifico los datos e imagen en la bd
+            else {
+                $this->generalView->showError("Formato de imagen no aceptado");
+                die();
+            }
+        } else { // no subió imagen
+            $id = $this->modelAutor->update($idAutor, $nombre, $biografia); // modifico los datos, dejando la imagen anterior
+        }
+
         //modifico ese registro en la bd
-        $id = $this->modelAutor->update($idAutor, $nombre, $biografia);
+        
     
         //redirijo al home
         header('Location: ' . BASE_URL . '/' . URL_AUTORES);
@@ -138,8 +160,8 @@ class AutoresController{
             return $this->generalView->showError("No existe el autor con el idautor=$idAutor");
         
         
-        $autores = $this->modelAutor->getAll();
-        return $this->view->showFormEditAutor($idAutor, $autores);  //muestro el formulario de edicion
+        // $autores = $this->modelAutor->getAll();
+        return $this->view->showFormEditImagenAutor($autor);  //muestro el formulario de edicion
     } // showEditLibro
 
 

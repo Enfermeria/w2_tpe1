@@ -1,5 +1,4 @@
 Falta hacer:
 - agregar paginación
-- agregar fotos a autor (tanto la carga como mostrarla)
 - poner fotos de fondo decorativas según secciones (una bibliotea para libros, un autor escribiendo para autores, algo alusivo para géneros)
 - sanitizar todas las salidas

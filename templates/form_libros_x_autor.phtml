@@ -21,6 +21,16 @@
 </div>
 
 
+<div class="column">
+    <div class="col-9">
+        <div class="form-group">
+            <?php if ($autor->imagen): //si tiene definida una imagen asociada?>
+                <img src="<?=$autor->imagen?>" alt="Imagen del autor">
+            <?php endif;?>
+        </div>
+    </div>
+</div>
+
 <!-- listado de libros de ese autor -->
 <h3>Lista de Libros del autor</h3>
 <table class="table table-bordered">
