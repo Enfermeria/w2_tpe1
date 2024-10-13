@@ -105,11 +105,12 @@ Entrega:    18 DE OCTUBRE
 
 */
 
-require_once './app/controllers/libros.controller.php';
-require_once './app/controllers/generos.controller.php';
-require_once './app/controllers/autores.controller.php';
-require_once './app/controllers/usuarios.controller.php';
-require_once './app/controllers/login.controller.php';
+require_once 'config.php';
+require_once 'app/controllers/libros.controller.php';
+require_once 'app/controllers/generos.controller.php';
+require_once 'app/controllers/autores.controller.php';
+require_once 'app/controllers/usuarios.controller.php';
+require_once 'app/controllers/login.controller.php';
 
 // base_url para redirecciones y base tag
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -149,6 +150,14 @@ if (!empty( $_GET['action'])) {
 // editAutor/:idAutor               AutoresController->editRegister($idAutor);
 // showDeleteAutor/:idAutor         AutoresController->showDeleteAutor($idAutor);
 // deleteAutor/:idAutor             AutoresController->deleteRegistro($idAutor);
+//======================================================================================
+// showUsuarios                     UsuariosController->showUsuarios();
+// showAddUsuario                   UsuariosController->showAddUsuario();
+// addUsuario                       UsuariosController->addUsuario();
+// showEditUsuario/:idUsuario       UsuariosController->showEditUsuario($idUsuario);
+// editUsuario/:idUsuario           UsuariosController->editUsuario($idUsuario);
+// showDeleteUsuario/:idUsuario     UsuariosController->showDeleteUSuario($idUsuario);
+// deleteUsuario/:idUsuario         UsuariosController->deleteUsuario($idUsuario);
 //======================================================================================
 // showLogin                        LoginController->showLogin();
 // login                            LoginController->login();

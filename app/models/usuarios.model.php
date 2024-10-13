@@ -1,17 +1,8 @@
 <?php
 
-class UsuariosModel {
-    private $db;
+require_once 'app/models/model.php';
 
-    public function __construct() {
-        $this->db = $this->getConnection(); // abro la conexión
-    } //__construct
-
-
-    private function getConnection() {
-        return new PDO('mysql:host=localhost;dbname=w2_tpe_libros;charset=utf8', 'root', ''); //1. Abro la conexión
-    } //getConnection
-
+class UsuariosModel extends Model {
 
     public function getByNombre($nombreUsuario) { //obtengo el nombre de usuario
         $query = $this->db->prepare("SELECT * FROM usuarios WHERE nombreusuario = ?");

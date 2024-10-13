@@ -1,16 +1,8 @@
 <?php
-class LibrosModel {
-    private $db;
 
-    public function __construct() {
-        $this->db = $this->getConnection(); // abro la conexión
-    } //__construct
+require_once 'app/models/model.php';
 
-
-    private function getConnection() {
-        return new PDO('mysql:host=localhost;dbname=w2_tpe_libros;charset=utf8', 'root', ''); //1. Abro la conexión
-    } //getConnection
-
+class LibrosModel extends Model {
 
     /*
     function getAll() { //devuelve todos las Libros

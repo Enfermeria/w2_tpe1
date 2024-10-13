@@ -2,7 +2,7 @@
 
 <h2>Editando un Autor</h2>
 
-<table class="table table-bordered">
+<table class="table table-bordered" style="white-space: nowrap; overflow-x: auto;">
     <thead>
         <tr>
             <th scope="col">Nombre</th>
@@ -29,12 +29,12 @@
             <?php else : // si no es el que edit muestro fila normal de la tabla?>
                 <tr que_id="<?=$autor->idautor?>">
                     <td data-label="Nombre"><?=$autor->nombre?></td>
-                    <td data-label="Biografía"><?=$autor->biografia?></td>
+                    <td data-label="Biografía"><?=substr($autor->biografia, 0, 150)?></td>
 
                     <td data-label="Acciones">
-                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                         &nbsp; 
-                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 </td>
                 </tr>
             <?php endif; ?> 
