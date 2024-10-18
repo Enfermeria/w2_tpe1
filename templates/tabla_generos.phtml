@@ -1,6 +1,6 @@
 <?php require 'templates/layout/header.phtml' ?>
 
-<main class="tabla-generos">
+<main class="container tabla-generos">
     <h2>Lista de Generos</h2>
     <table class="table table-bordered">
         <thead>
@@ -34,7 +34,8 @@
 
     <p class="mt-3"><small>Mostrando <?=$count?> generos</small></p>
     <p id="mensaje"></p>
-</main>
-<?php require 'templates/barra_inferior_generos.phtml' ?>
 
+    <?php require 'templates/barra_inferior_generos.phtml' ?>
+</main>
+    
 <?php require 'templates/layout/footer.phtml' ?>
