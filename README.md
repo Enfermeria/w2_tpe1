@@ -54,6 +54,7 @@ La tabla usuarios contiene:
   * w2_tpe_libros.sql: Script sql con la generación de la base de datos, tablas y relaciones respectivas.
 
 # Diagrama Entidad Relación (con relaciones 1 a N)
-![DER_libros](https://github.com/user-attachments/assets/86f9bdd5-c3d0-4e7d-8ca5-3bbc74afcb5e)
+![DER_libros](https://github.com/user-attachments/assets/c9963d5c-765b-4b22-adab-2e40e5a0fcf0)
+
 
 

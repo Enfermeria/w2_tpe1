@@ -10,3 +10,14 @@ td {
     margin-left: auto;
     margin-right: auto;
 }
+.BORRARtabla-generos {
+    background-image: 
+        linear-gradient(0deg, rgba(100, 100, 100, 0.7), rgba(100, 100, 100, 0.7) ),
+        url('../images/libros-generos-fondo.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    padding: 20px; 
+    min-height: 100vh;
+    color:white;
+}
