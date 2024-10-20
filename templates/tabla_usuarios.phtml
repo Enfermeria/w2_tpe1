@@ -12,7 +12,7 @@
 
         <?php foreach($usuarios as $usuario): ?>
             <tr que_id="<?=$usuario->idusuario?>">
-                <td data-label="Usuario"> <?=$usuario->nombreusuario?> </td>
+                <td data-label="Usuario"> <?=htmlspecialchars($usuario->nombreusuario)?> </td>
 
                 <td data-label="Acciones">
                         <a href="showEditUsuario/<?=$usuario->idusuario?>"   class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

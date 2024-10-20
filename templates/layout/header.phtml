@@ -52,7 +52,7 @@
                 </div>
                 
                 <?php if(isset($_SESSION['nombreusuario'])): // si tiene usuario, es decir, si está logueado ?>
-                    <span class="navbar-text"><?= $_SESSION['nombreusuario'] ?></span>
+                    <span class="navbar-text"><?=htmlspecialchars( $_SESSION['nombreusuario'] )?></span>
                 <?php endif; ?>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

@@ -13,7 +13,7 @@
 
             <?php foreach($generos as $regGenero): ?>
                 <tr que_id="<?=$regGenero->idgenero?>">
-                    <td data-label="Género"> <a href="showLibrosxGenero/<?=$regGenero->idgenero?>"> <?=$regGenero->genero?> </a> </td>
+                    <td data-label="Género"> <a href="showLibrosxGenero/<?=$regGenero->idgenero?>"> <?=htmlspecialchars($regGenero->genero)?> </a> </td>
 
                     <td data-label="Acciones">
                         <?php if (isset($_SESSION['idusuario'])): //si esta logueado ?>

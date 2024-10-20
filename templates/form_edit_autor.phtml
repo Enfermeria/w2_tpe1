@@ -29,8 +29,8 @@
                 </tr>
             <?php else : // si no es el que edit muestro fila normal de la tabla?>
                 <tr que_id="<?=$autor->idautor?>">
-                    <td data-label="Nombre"><?=$autor->nombre?></td>
-                    <td data-label="Biografía"><?=substr($autor->biografia, 0, 100)?></td>
+                    <td data-label="Nombre"><?=htmlspecialchars($autor->nombre)?></td>
+                    <td data-label="Biografía"><?=htmlspecialchars(substr($autor->biografia, 0, 100))?></td>
 
                     <td data-label="Acciones">
                         <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>

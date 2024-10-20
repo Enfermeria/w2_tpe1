@@ -13,8 +13,8 @@
 
         <?php foreach($autores as $autor): ?>
             <tr que_id="<?=$autor->idcarrera?>">
-                <td data-label="Nombre"><a href="showLibrosxAutor/<?=$autor->idautor?>"> <?=$autor->nombre?> </a></td>
-                <td data-label="Biografía"><?=substr($autor->biografia, 0, 150)?></td>
+                <td data-label="Nombre"><a href="showLibrosxAutor/<?=$autor->idautor?>"> <?=htmlspecialchars($autor->nombre)?> </a></td>
+                <td data-label="Biografía"><?=htmlspecialchars(substr($autor->biografia, 0, 150))?></td>
                 <td data-label="Acciones">
                     <?php if (isset($_SESSION['idusuario'])): //si esta logueado ?>
                         <a href="showEditAutor/<?=$autor->idautor?>"   class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

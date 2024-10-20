@@ -46,10 +46,10 @@
                 </tr>
             <?php else: // si no es el que edito muestro fila normal de la tabla?>
                 <tr que_id="<?=$libro->idlibro?>">
-                    <td data-label="Título"><?=$libro->titulo?></td>
-                    <td data-label="Autor"><?=$libro->nombre?></td>
-                    <td data-label="Género"><?=$libro->genero?></td>
-                    <td data-label="Edición"><?=$libro->edicion?></td>
+                    <td data-label="Título"><?=htmlspecialchars($libro->titulo)?></td>
+                    <td data-label="Autor"><?=htmlspecialchars($libro->nombre)?></td>
+                    <td data-label="Género"><?=htmlspecialchars($libro->genero)?></td>
+                    <td data-label="Edición"><?=htmlspecialchars($libro->edicion)?></td>
 
                     <td data-label="Acciones">
                         <button disabled class="btn btn-sm btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>

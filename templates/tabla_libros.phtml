@@ -15,10 +15,10 @@
 
         <?php foreach($libros as $libro): ?>
             <tr que_id="<?=$libro->idlibro?>">
-                <td data-label="Título"><?=$libro->titulo?></td>
-                <td data-label="Autor"><a href="showLibrosxAutor/<?=$libro->idautor?>">    <?=$libro->nombre?> </a></td>
-                <td data-label="Género"><a href="showLibrosxGenero/<?=$libro->idgenero?>"> <?=$libro->genero?> </a></td>
-                <td data-label="Edición"><?=$libro->edicion?></td>
+                <td data-label="Título"><?=htmlspecialchars($libro->titulo)?></td>
+                <td data-label="Autor"><a href="showLibrosxAutor/<?=$libro->idautor?>">    <?=htmlspecialchars($libro->nombre)?> </a></td>
+                <td data-label="Género"><a href="showLibrosxGenero/<?=$libro->idgenero?>"> <?=htmlspecialchars($libro->genero)?> </a></td>
+                <td data-label="Edición"><?=htmlspecialchars($libro->edicion)?></td>
                 <td data-label="Acciones">
                     <?php if (isset($_SESSION['idusuario'])): //si esta logueado ?>
                         <a href="showEditLibro/<?=$libro->idlibro?>"   class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

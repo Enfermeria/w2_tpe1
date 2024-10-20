@@ -44,9 +44,9 @@
     <tbody class="table-group-divider"> 
         <?php foreach($libros as $libro): ?>
             <tr que_id="<?=$libro->idlibro?>">
-                <td data-label="Título"><?=$libro->titulo?></td>
-                <td data-label="Género"><?=$libro->genero?></td>
-                <td data-label="Edición"><?=$libro->edicion?></td>
+                <td data-label="Título"><?=htmlspecialchars($libro->titulo)?></td>
+                <td data-label="Género"><?=htmlspecialchars($libro->genero)?></td>
+                <td data-label="Edición"><?=htmlspecialchars($libro->edicion)?></td>
             </tr>
         <?php endforeach; ?> 
     </tbody>
