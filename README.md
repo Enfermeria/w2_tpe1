@@ -4,6 +4,8 @@
   * John David Molina Velarde
   * Mateo Fleites
 
+
+
 # Descripción
 Segunda entrega del Trabajo Práctico Especial de Web 2 Tudai Grupo 66 Biblioteca.
 Es una base de datos con su tabla de libros, autores y los géneros de dichos libros. Hay 2 relaciones 1 a N, tanto entre géneros y los libros y entre los autores y los libros. Además se usa una tabla de usuarios para los accesos (login).
@@ -27,6 +29,8 @@ La opción Usuario del menú superior sólo aparece si hay un usuario logueado. 
   * Se incluye el SQL para la instalación de la base de datos (si no se desa usar el AutoDeploy)
   * Se incluye un usario "webadmin" con clave "admin"
 
+
+
 # Tablas
 La tabla libro contiene:
   * idlibro (que es la clave Primaria, es autoincremental)
@@ -49,12 +53,19 @@ La tabla usuarios contiene:
   * nombreusuario (es el nombre del usuario, usado para identificarse)
   * passwordhash (es el password_hash($password, PASSWORD_DEFAULT) que se almacena, no almacenamos el password por motivos de seguridad)
 
-# Archivos incluidos
-  * DER_libros.pdf: Diagrama de Entidad Relación (también se incluye la imagen del mismo al final de este readme.
-  * w2_tpe_libros.sql: Script sql con la generación de la base de datos, tablas y relaciones respectivas.
+
 
 # Diagrama Entidad Relación (con relaciones 1 a N)
 ![DER_libros](https://github.com/user-attachments/assets/c9963d5c-765b-4b22-adab-2e40e5a0fcf0)
 
 
 
+# Instalacion
+  * Una vez que se tiene el Apache corriendo con la base de datos MySQL o MariaDB, se debe copiar los contenidos del GitHub a una carpeta dentro de /xampp/htdocs, por ejemplo, nosotros la tenemos en /xampp/htdocs/web2/w2_tpe2.
+  * Debe tenerse creada la base de datos w2_tpe_libros (puede importarse el script de database/w2_tpe_libros.sql, que es un script sql con la generación de la base de datos, tablas y relaciones respectivas.)
+  * Si solo creó la base de datos w2_tpe_libros sin sus respectivas tablas (porque no importó el sript del punto anterior), al ejecutarse por primera vez se crearán las tablas con datos iniciales de prueba.
+
+
+
+# Nota de los autores
+Hemos puesto mucho esfuerzo en esta aplicación. Esperamos que le resulte agradable y fácil su uso. Cualquier comentario, sugerencia o corrección que considere pertinente, estamos a su entera disposición.
